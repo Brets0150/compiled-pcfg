@@ -96,7 +96,7 @@ void  generate_guesses(PQItem *pq_item) {
 
 // The main program
 int main(int argc, char *argv[]) {
-	
+
 	// Holds the info from the command line
 	struct program_info program_info;
 
@@ -105,7 +105,13 @@ int main(int argc, char *argv[]) {
 		fprintf(stderr, "Error, parsing command line. Exiting\n");
         return 0;
 	}
-    
+
+    // Handle --keyspace option: output 1 and exit
+    if (program_info.keyspace) {
+        printf("1\n");
+        return 0;
+    }
+
     // Print the startup banner
     print_banner(program_info.version);
     

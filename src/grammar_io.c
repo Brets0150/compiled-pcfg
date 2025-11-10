@@ -225,24 +225,27 @@ int load_terminal(char *config_filename, char *base_directory, char *structure, 
 
         //Find the id for this file, aka A1 vs A23. This is the 1, or 23
         char *end_pos = strchr(result[i],'.');
-        
+
         //If there isn't a .txt, this is an invalid file
         if (end_pos == NULL) {
+            fprintf(stderr, "Invalid File name found in rules (missing extension): %s\n", result[i]);
             return 1;
         }
-        
+
+        // Clear errno before calling strtol, as it may be set from previous operations
+        errno = 0;
         long id = strtol(result[i],&end_pos, 10);
-        
+
         // Check to make sure it was a number
         if ((errno == EINVAL) || (errno == ERANGE))
         {
-            fprintf(stderr, "Invalid File name found in rules. Exiting\n");
+            fprintf(stderr, "Invalid File name found in rules (strtol error): %s\n", result[i]);
             return 1;
         }
-         
+
         // Make sure the id falls within the acceptable range
         if (id <= 0) {
-            fprintf(stderr, "Invalid File name found in rules. Exiting\n");
+            fprintf(stderr, "Invalid File name found in rules (id <= 0): %s (parsed id: %ld)\n", result[i], id);
             return 1;
         }      
 

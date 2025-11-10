@@ -37,6 +37,7 @@ static struct argp_option options[] =
     {"rule_name",  'r', "OUTFILE", 0, "The ruleset to use. Default is: 'Default'"},
     {"rules_directory", 'R', "DIR", 0, "The base directory containing rules. Default is: '<executable_dir>/Rules'"},
     {"debug", 'd', 0, 0, "Prints out debugging info vs guesses."},
+    {"keyspace", 'k', 0, 0, "Output keyspace size (always 1) and exit."},
     {0}
 };
 
@@ -49,6 +50,9 @@ static error_t parse_opt (int key, char *arg, struct argp_state *state){
     switch (key) {
         case 'd':
             program_info->debug = 1;
+            break;
+        case 'k':
+            program_info->keyspace = 1;
             break;
         case 'r':
             program_info->rule_name = arg;
@@ -84,6 +88,7 @@ int parse_command_line(int argc, char **argv, struct program_info *program_info)
     program_info->rule_name = "Default";
     program_info->rules_directory = NULL;  // NULL means use default relative to executable
     program_info->debug = 0;
+    program_info->keyspace = 0;
     program_info->version = VERSION;
     program_info->min_supported_version = MIN_SUPPORTED_VERSION;
 
