@@ -44,7 +44,7 @@ Use the following configuration to add PCFG Guesser as a preprocessor:
 
 * **Name:** `pcfg_guesser`
 * **Binary Basename:** `pcfg_guesser`
-* **Download URL:** [https://github.com/Brets0150/compiled-pcfg/raw/refs/heads/master/pcfg_guesser.7z](https://github.com/Brets0150/compiled-pcfg/raw/refs/heads/master/pcfg_guesser.7z)
+* **Download URL:** [https://github.com/Brets0150/pcfg-c-compiled-for-hashtopolis/raw/refs/heads/master/hashtopolis_files/pcfg_guesser.7z](https://github.com/Brets0150/pcfg-c-compiled-for-hashtopolis/raw/refs/heads/master/hashtopolis_files/pcfg_guesser.7z)
 * **Commands:** `--keyspace`, `--skip`, `--limited`
 
 > ⚠️ **Important:**
